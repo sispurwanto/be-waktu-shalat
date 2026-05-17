@@ -1,0 +1,26 @@
+required : 
+- hanya untuk local saja, belum di production
+
+### cara menjalankan
+```bash
+npm install
+```
+```bash
+node index.js
+``` 
+
+### Langkah 1: Dapatkan Kunci Service Account
+Buka browser dan masuk ke Firebase Console.
+Buka project Anda (masjid-app-f0906).
+Klik ikon Gear (Pengaturan) di kiri atas -> Pilih Project settings.
+Pindah ke tab Service accounts.
+Di bagian bawah, klik tombol Generate new private key (Buat kunci privat baru).
+Akan terdownload sebuah file .json.
+Langkah 2: Pindahkan Kunci ke Folder Project
+Ubah nama file .json yang baru saja didownload menjadi serviceAccountKey.json.
+Pindahkan/copas file tersebut ke dalam folder be_jadwal_shalat milik Anda (sejajar dengan file index.js).
+Langkah 3: Jalankan Server di Lokal
+Buka terminal Anda, pastikan posisi direktori ada di be_jadwal_shalat, lalu jalankan:
+
+bash
+node index.js
