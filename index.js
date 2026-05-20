@@ -69,8 +69,18 @@ app.post('/api/masjid/:masjidId', async (req, res) => {
         maghrib: { waktu_iqomah: 10, waktu_shalat: 15 },
         isya: { waktu_iqomah: 15, waktu_shalat: 15 }
       },
-      nasehat: bodyData.nasehat || [],     // Array Dinamis
-      informasi: bodyData.informasi || []  // Array Dinamis
+      nasehat: (bodyData.nasehat || []).map(item => ({
+        id: item.id?.toString() || '',
+        dalil: item.dalil || '',
+        isi: item.isi || '',
+        url_slide: item.url_slide || ''
+      })),
+      informasi: (bodyData.informasi || []).map(item => ({
+        id: item.id?.toString() || '',
+        title: item.title || '',
+        content: item.content || '',
+        url_slide: item.url_slide || ''
+      }))
     };
 
     const masjidRef = db.collection('masjid').doc(masjidId);
@@ -110,10 +120,10 @@ app.listen(PORT, () => {
     "isya": { "waktu_iqomah": 15, "waktu_shalat": 15 }
   },
   "nasehat": [
-    { "id": "1", "dalil": "QS Al Baqoroh 255", "isi": "Ayat Kursi..." }
+    { "id": "1", "dalil": "QS Al Baqoroh 255", "isi": "Ayat Kursi...", "url_slide": "" }
   ],
   "informasi": [
-    { "id": "1", "title": "Kajian", "content": "Rutin" }
+    { "id": "1", "title": "Kajian", "content": "Rutin", "url_slide": "" }
   ]
 }`);
 });
